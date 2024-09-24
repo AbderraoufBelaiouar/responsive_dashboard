@@ -10,6 +10,7 @@ class ResponsiveDashBoardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffFAFAFA),
       body: AdaptiveLayout(
         mobileLayout: (BuildContext context) => const DashBoardMobileLayout(),
         tabletLayout: (BuildContext context) => const DashBoardTabletLayout(),
