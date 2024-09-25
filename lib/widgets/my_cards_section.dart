@@ -1,44 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:responsive_dashboard/models/transaction_item_model.dart';
-import 'package:responsive_dashboard/utils/app_images.dart';
 import 'package:responsive_dashboard/utils/app_styles.dart';
 import 'package:responsive_dashboard/widgets/custom_background_container.dart';
+import 'package:responsive_dashboard/widgets/dots_indicator.dart';
+import 'package:responsive_dashboard/widgets/my_cards_page_view.dart';
 
-class MyCardSection extends StatelessWidget {
+class MyCardSection extends StatefulWidget {
   const MyCardSection({super.key});
 
   @override
+  State<MyCardSection> createState() => _MyCardSectionState();
+}
+
+class _MyCardSectionState extends State<MyCardSection> {
+  late int currentIndex;
+  late PageController pageController;
+  @override
+  void initState() {
+    pageController = PageController();
+    pageController.addListener(
+      () {
+        currentIndex = pageController.page!.round();
+      },
+    );
+    currentIndex = 0;
+    setState(() {});
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const CustomBackgroundContainer(
+    return CustomBackgroundContainer(
       child: Padding(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
+          const Text(
             "My card",
             style: AppStyles.styleSemiBold20,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          MyCard(),
-          SizedBox(
+          MyCardsPageView(
+            pageController: pageController,
+          ),
+          const SizedBox(
             height: 19,
           ),
-          // points
-          Divider(
+          DotsIndicator(
+            currentIndex: currentIndex,
+          ),
+          const Divider(
             height: 40,
             color: Color(0xFFF1F1F1),
           ),
-          TransactionHistorySection()
+          const TransactionHistory()
         ]),
       ),
     );
   }
 }
 
-class TransactionHistorySection extends StatelessWidget {
-  const TransactionHistorySection({super.key});
+class TransactionHistory extends StatelessWidget {
+  const TransactionHistory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -121,79 +145,6 @@ class TransactionHistoryHeader extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class MyCard extends StatelessWidget {
-  const MyCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 412 / 215,
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        decoration: const BoxDecoration(
-          image:
-              DecorationImage(image: AssetImage(Assets.imagesCardBackground)),
-          color: Color(0xFF4EB7F2),
-          borderRadius: BorderRadius.all(
-            Radius.circular(12),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Name card",
-                      style: AppStyles.styleRegular16
-                          .copyWith(color: const Color(0xffFFFFFF)),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      "Syah Bandi",
-                      style: AppStyles.styleMedium20,
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                const Icon(FontAwesomeIcons.image),
-              ],
-            ),
-            const Spacer(),
-            Text(
-              "0918 8124 0042 8129",
-              style: AppStyles.styleSemiBold24.copyWith(
-                color: const Color(
-                  0xFFFFFFFF,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              "12/20 - 124",
-              style: AppStyles.styleRegular16.copyWith(
-                color: const Color(
-                  0xFFFFFFFF,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
