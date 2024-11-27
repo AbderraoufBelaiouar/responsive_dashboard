@@ -3,7 +3,6 @@ import 'package:responsive_dashboard/models/drawer_item_model.dart';
 import 'package:responsive_dashboard/models/user_info_model.dart';
 import 'package:responsive_dashboard/utils/app_images.dart';
 import 'package:responsive_dashboard/widgets/active_and_inactive_drawer_item.dart';
-import 'package:responsive_dashboard/widgets/custom_background_container.dart';
 import 'package:responsive_dashboard/widgets/drawer_items_list_view.dart';
 import 'package:responsive_dashboard/widgets/user_info_list_tile.dart';
 
@@ -12,9 +11,10 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomBackgroundContainer(
-      padding: 0,
-      child: Padding(
+    return Container(
+      width: MediaQuery.of(context).size.width * .5,
+      color: Colors.white,
+      child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 28.0, vertical: 32),
         child: CustomScrollView(
           slivers: [

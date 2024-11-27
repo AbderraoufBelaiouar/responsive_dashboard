@@ -13,24 +13,24 @@ class DrawerItemsListView extends StatefulWidget {
 }
 
 class _DrawerItemsListViewState extends State<DrawerItemsListView> {
-  static const List<DrawerItemModel> drawerItems = [
-    DrawerItemModel(
+  final List<DrawerItemModel> drawerItems = [
+    const DrawerItemModel(
       title: "Dashboard",
       image: Assets.imagesDashboard,
     ),
-    DrawerItemModel(
+    const DrawerItemModel(
       title: "My Transction",
       image: Assets.imagesMyTransctions,
     ),
-    DrawerItemModel(
+    const DrawerItemModel(
       title: "Statistics",
       image: Assets.imagesStatistics,
     ),
-    DrawerItemModel(
+    const DrawerItemModel(
       title: "Wallet Account",
       image: Assets.imagesWalletAccount,
     ),
-    DrawerItemModel(
+    const DrawerItemModel(
       title: "My Investments",
       image: Assets.imagesMyInvestments,
     ),

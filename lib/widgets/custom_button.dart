@@ -22,9 +22,9 @@ class CustomButton extends StatelessWidget {
           child: Text(
             text,
             style: textColor == null
-                ? AppStyles.styleSemiBold18
+                ? AppStyles.styleSemiBold18(context)
                     .copyWith(color: const Color(0xFFFFFFFF))
-                : AppStyles.styleSemiBold18,
+                : AppStyles.styleSemiBold18(context),
           ),
         ),
       ),

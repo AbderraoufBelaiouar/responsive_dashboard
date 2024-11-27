@@ -12,8 +12,12 @@ class InActiveDrawerItem extends StatelessWidget {
     return ListTile(
         contentPadding: const EdgeInsets.symmetric(vertical: 20),
         leading: SvgPicture.asset(drawerItemModel.image),
-        title: Text(drawerItemModel.title),
-        titleTextStyle: AppStyles.styleBold16);
+        title: FittedBox(
+          alignment: FractionalOffset.center,
+          fit: BoxFit.scaleDown,
+          child: Text(drawerItemModel.title),
+        ),
+        titleTextStyle: AppStyles.styleBold16(context));
   }
 }
 
@@ -30,9 +34,12 @@ class ActiveDrawerItem extends StatelessWidget {
         color: const Color(0xFF4EB7F2),
       ),
       leading: SvgPicture.asset(drawerItemModel.image),
-      title: Text(drawerItemModel.title),
-      titleTextStyle:
-          AppStyles.styleBold16.copyWith(color: const Color(0xFF4EB7F2)),
+      title: FittedBox(
+          alignment: FractionalOffset.center,
+          fit: BoxFit.scaleDown,
+          child: Text(drawerItemModel.title)),
+      titleTextStyle: AppStyles.styleBold16(context)
+          .copyWith(color: const Color(0xFF4EB7F2)),
     );
   }
 }
