@@ -20,6 +20,8 @@
 
 This project follows a modular architecture with proper asset management and utility functions to maintain scalability and organization. Key resources such as fonts and images are structured for easy access and maintainability.
 
+## Screenshots
+
 <p align="center">
   <img src="./screenshots/desktop.png" alt="desktop layout" width="24%" />
   <img src="./screenshots/mobile.png" alt="mobile layout" width="24%" />
